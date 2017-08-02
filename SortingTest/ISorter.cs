@@ -8,7 +8,7 @@ namespace SortingTest
 {
     public interface ISorter
     {
-        int[] Sort(int[] arr);
+        void Sort();
 
     }
 }

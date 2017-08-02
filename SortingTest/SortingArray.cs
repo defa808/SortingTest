@@ -5,9 +5,23 @@ using System.Text;
 
 namespace SortingTest
 {
-    public class SortingArray: ISorter
+    public class SortingArray : ISorter
     {
-        public int[] Sort(int[] arr)
+
+        private int[] _collectionArray;
+
+        public int[] CollectionArray
+        {
+            get => _collectionArray;
+        }
+
+        public SortingArray(int [] arr)
+        {
+            _collectionArray = arr;
+            
+        }
+
+        public void Sort()
         {
             throw new System.NotImplementedException();
         }
