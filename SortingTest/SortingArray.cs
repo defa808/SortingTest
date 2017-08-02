@@ -5,9 +5,9 @@ using System.Text;
 
 namespace SortingTest
 {
-    public static class SortingArray
+    public class SortingArray: ISorter
     {
-        public static int[] Sort(int[] arr)
+        public int[] Sort(int[] arr)
         {
             throw new System.NotImplementedException();
         }
