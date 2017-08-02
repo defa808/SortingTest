@@ -16,7 +16,7 @@ namespace SortingTest.Test
         {
             //arrange
             int[] actualArray = new[] { 4, 3, 2, 5, 1, 2 };
-            int[] expectedArray = new[] { 1, 2, 2, 3, 4,5 };
+            int[] expectedArray = new[] { 1, 2, 2, 3, 4, 5 };
 
             SortingArray instance = new SortingArray(actualArray);
             //act
@@ -57,7 +57,7 @@ namespace SortingTest.Test
         public void Sort_OneElementInArray_CorrectArray()
         {
             //arrange
-            int[] actualArray = new[] { 1};
+            int[] actualArray = new[] { 1 };
             int[] expectedArray = new[] { 1 };
 
             SortingArray instance = new SortingArray(actualArray);
@@ -68,6 +68,7 @@ namespace SortingTest.Test
         }
 
         [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
         public void Sort_IntArrayEmpty_ExpectedException()
         {
             //arrange
@@ -75,16 +76,7 @@ namespace SortingTest.Test
 
             SortingArray instance = new SortingArray(actualArray);
             //act
-            try
-            {
-                instance.Sort();
-            }
-            //assert
-            catch
-            {
-                throw new Exception("Can't sort empty array");
-
-            }
+            instance.Sort();
 
         }
 
