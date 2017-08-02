@@ -12,11 +12,11 @@ namespace SortingTest.Test
 
 
         [TestMethod]
-        public void Sort_TwoTheSameElem_CorrectArray()
+        public void Sort_IntArray_CorrectArray()
         {
             //arrange
             int[] actualArray = new[] { 4, 3, 2, 5, 1, 2 };
-            int[] expectedArray = new[] { 1, 2, 2, 3, 4 };
+            int[] expectedArray = new[] { 1, 2, 2, 3, 4,5 };
 
             SortingArray instance = new SortingArray(actualArray);
             //act

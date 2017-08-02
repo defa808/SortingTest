@@ -23,7 +23,18 @@ namespace SortingTest
 
         public void Sort()
         {
-            throw new System.NotImplementedException();
+            for (int i = _collectionArray.Length - 1; i >= 0; i--)
+            {
+                for (int j = 0; j < i; j++)
+                {
+                    if (_collectionArray[j] > _collectionArray[j + 1])
+                    {
+                        int tmp = _collectionArray[j];
+                        _collectionArray[j] = _collectionArray[j + 1];
+                        _collectionArray[j + 1] = tmp;
+                    }
+                }
+            }
         }
 
     }
