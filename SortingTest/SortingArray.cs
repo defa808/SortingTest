@@ -46,8 +46,11 @@ namespace SortingTest
 
         public void Add(int item)
         {
-            throw new NotImplementedException();
-
+            //throw new NotImplementedException();
+            int[] temp = new int[_collectionArray.Length + 1];
+            _collectionArray.CopyTo(temp, 0);
+            temp[_collectionArray.Length] = item;
+            _collectionArray = temp;
         }
 
        
