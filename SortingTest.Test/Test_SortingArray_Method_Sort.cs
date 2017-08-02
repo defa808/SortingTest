@@ -116,33 +116,43 @@ namespace SortingTest.Test
         public void Current_OneElement_ExpectedOneElement()
         {
             //arrange
-            int[] actualArray = new[] { 1 };
-            SortingArray instance = new SortingArray(actualArray);
-            int[] tempArray = new[] { 1 };
+            int[] array = new[] { 1 };
+            object[] expectedArray = new object[] { 1 };
+            object[] actualArray = new object[0];
 
             //act
-            object expected = tempArray;
-            var actual = instance.Current;
+            SortingArray instance = new SortingArray(array);
+            int i = 0;
+            while (instance.MoveNext())
+            {
+                actualArray[i] = instance.Current;
+                i++;
+            }
 
             //assert
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expectedArray, actualArray);
 
         }
 
         [TestMethod]
-        public void Current_EmptyCollection_ExpectedNull()
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void Current_EmptyCollection_ExpectedException()
         {
             //arrange
-            int[] actualArray = new int[0];
-            SortingArray instance = new SortingArray(actualArray);
-            int[] tempArray = new int[0];
+            int[] array = new int[0];
+            object[] expectedArray = new object[0];
+            object[] actualArray = new object[0];
 
             //act
-            object expected = tempArray;
-            var actual = instance.Current;
+            SortingArray instance = new SortingArray(array);
+            int i = 0;
+            while (instance.MoveNext())
+            {
+                actualArray[i] = instance.Current;
+                i++;
+            }
 
-            //assert
-            Assert.AreEqual(expected, actual);
+           
 
         }
 
@@ -150,16 +160,21 @@ namespace SortingTest.Test
         public void Current_FullCollection_RightElement()
         {
             //arrange
-            int[] actualArray = new[] { 1, 2 };
-            SortingArray instance = new SortingArray(actualArray);
-            int[] tempArray = new[] { 1 };
+            int[] array = new[] { 1, 2, 3 };
+            object[] expectedArray = new object[] { 1, 2, 3 };
+            object[] actualArray = new object[0];
 
             //act
-            object expected = tempArray;
-            var actual = instance.Current;
+            SortingArray instance = new SortingArray(array);
+            int i = 0;
+            while (instance.MoveNext())
+            {
+                actualArray[i] = instance.Current;
+                i++;
+            }
 
             //assert
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expectedArray, actualArray);
 
         }
 

@@ -60,12 +60,20 @@ namespace SortingTest
 
         public bool MoveNext()
         {
-            throw new NotImplementedException();
+            if (position < _collectionArray.Length - 1)
+            {
+                position++;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public void Reset()
         {
-            throw new NotImplementedException();
+            position = -1;
         }
     }
 }
