@@ -6,7 +6,7 @@ namespace SortingTest.Test
     [TestClass]
     public class Test_SortingArray_Method_Sort
     {
-        #region TestsForMethodSort
+        #region Tests_Sort
 
         [TestMethod]
         public void Sort_IntArray_CorrectArray()
@@ -78,7 +78,7 @@ namespace SortingTest.Test
         }
         #endregion
 
-        #region TestsForMethodAdd
+        #region Tests_Add
         [TestMethod]
         public void Add_OneElementInt_SuccessfullyAdding()
         {
@@ -109,6 +109,89 @@ namespace SortingTest.Test
             CollectionAssert.AreEqual(instance.CollectionArray, expectedArray);
         }
 
+        #endregion
+
+        #region Tests_Current
+        [TestMethod]
+        public void Current_OneElement_ExpectedOneElement()
+        {
+            //arrange
+            int[] actualArray = new[] { 1 };
+            SortingArray instance = new SortingArray(actualArray);
+            int[] tempArray = new[] { 1 };
+
+            //act
+            object expected = tempArray;
+            var actual = instance.Current;
+
+            //assert
+            Assert.AreEqual(expected, actual);
+
+        }
+
+        [TestMethod]
+        public void Current_EmptyCollection_ExpectedNull()
+        {
+            //arrange
+            int[] actualArray = new int[0];
+            SortingArray instance = new SortingArray(actualArray);
+            int[] tempArray = new int[0];
+
+            //act
+            object expected = tempArray;
+            var actual = instance.Current;
+
+            //assert
+            Assert.AreEqual(expected, actual);
+
+        }
+
+        [TestMethod]
+        public void Current_FullCollection_RightElement()
+        {
+            //arrange
+            int[] actualArray = new[] { 1, 2 };
+            SortingArray instance = new SortingArray(actualArray);
+            int[] tempArray = new[] { 1 };
+
+            //act
+            object expected = tempArray;
+            var actual = instance.Current;
+
+            //assert
+            Assert.AreEqual(expected, actual);
+
+        }
+
+        #endregion
+
+        #region Tests_MoveNext
+        [TestMethod]
+        public void MoveNext_FinityCalling()
+        {
+            //arrange
+            int[] actualArray = new[] { 1, 2 };
+            SortingArray instance = new SortingArray(actualArray);
+
+            //act
+            bool flag = false;
+            for (int i = 0; i < 4; i++)
+            {
+                if (instance.MoveNext())
+                {
+                    flag = true;
+                }
+                else
+                {
+                    flag = false;
+                }
+
+            }
+
+            //assert
+            Assert.IsFalse(flag);
+
+        }
         #endregion
 
     }

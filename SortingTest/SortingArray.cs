@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace SortingTest
 {
-    public class SortingArray : ISorter
+    public class SortingArray : ISorter, IEnumerator
     {
 
         private int[] _collectionArray;
@@ -14,6 +15,10 @@ namespace SortingTest
         {
             get => _collectionArray;
         }
+
+        int position = -1;
+
+        public object Current => throw new NotImplementedException();
 
         public SortingArray(int [] arr)
         {
@@ -53,6 +58,14 @@ namespace SortingTest
             _collectionArray = temp;
         }
 
-       
+        public bool MoveNext()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Reset()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
