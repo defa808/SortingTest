@@ -17,6 +17,11 @@ namespace SortingTest
 
         public SortingArray(int [] arr)
         {
+            if(arr.Length == 0)
+            {
+                throw new InvalidOperationException("Collection is not set");
+
+            }
             _collectionArray = arr;
             
         }
@@ -37,5 +42,13 @@ namespace SortingTest
             }
         }
 
+
+        public void Add(int item)
+        {
+            throw new NotImplementedException();
+
+        }
+
+       
     }
 }

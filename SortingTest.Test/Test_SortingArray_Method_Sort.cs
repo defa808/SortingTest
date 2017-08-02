@@ -7,10 +7,6 @@ namespace SortingTest.Test
     public class Test_SortingArray_Method_Sort
     {
 
-
-
-
-
         [TestMethod]
         public void Sort_IntArray_CorrectArray()
         {
@@ -77,6 +73,8 @@ namespace SortingTest.Test
             SortingArray instance = new SortingArray(actualArray);
             //act
             instance.Sort();
+
+            
 
         }
 
