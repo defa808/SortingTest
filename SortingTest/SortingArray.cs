@@ -17,14 +17,38 @@ namespace SortingTest
 
         public SortingArray(int[] arr)
         {
+            if(arr.Length == 0)
+            {
+                throw new InvalidOperationException("Collection is not set");
+
+            }
             _collectionArray = arr;
 
         }
 
         public void Sort()
         {
+            for (int i = _collectionArray.Length - 1; i >= 0; i--)
+            {
+                for (int j = 0; j < i; j++)
+                {
+                    if (_collectionArray[j] > _collectionArray[j + 1])
+                    {
+                        int tmp = _collectionArray[j];
+                        _collectionArray[j] = _collectionArray[j + 1];
+                        _collectionArray[j + 1] = tmp;
+                    }
+                }
+            }
             //throw new System.NotImplementedException();
-            _collectionArray = ParallelSort(_collectionArray);
+            //_collectionArray = ParallelSort(_collectionArray);
+        }
+
+
+        public void Add(int item)
+        {
+            throw new NotImplementedException();
+
         }
 
         static int[] ParallelSort(int[] array)
