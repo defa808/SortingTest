@@ -6,6 +6,7 @@ namespace SortingTest.Test
     [TestClass]
     public class UnitTest1
     {
+
         [TestMethod]
         public void Sort_IntArray_CorrectArray()
         {
@@ -14,7 +15,7 @@ namespace SortingTest.Test
             int[] myArray = { 1, 3, 2 };
 
             //act
-            Array.Sort(myArray);
+            SortingArray.Sort(myArray);
 
             //assert
             CollectionAssert.AreEqual(array, myArray);
@@ -28,8 +29,8 @@ namespace SortingTest.Test
             int[] myArray = { 1, 3, 2 };
 
             //act
-            Array.Sort(myArray);
-            Array.Sort(myArray);
+            SortingArray.Sort(myArray);
+            SortingArray.Sort(myArray);
 
             //assert
             CollectionAssert.AreEqual(array, myArray);
@@ -44,7 +45,7 @@ namespace SortingTest.Test
             int[] myArray = { 1, 3, 2, -1 };
 
             //act
-            Array.Sort(myArray);
+            SortingArray.Sort(myArray);
 
             //assert
             CollectionAssert.AreEqual(array, myArray);
@@ -59,7 +60,7 @@ namespace SortingTest.Test
 
             //act
             bool flag = false;
-            Array.Sort(myArray);
+            SortingArray.Sort(myArray);
             flag = true;
 
             if (flag)
@@ -79,7 +80,7 @@ namespace SortingTest.Test
             //act
             try
             {
-                Array.Sort(myArray);
+                SortingArray.Sort(myArray);
             }
             catch
             {
@@ -106,7 +107,7 @@ namespace SortingTest.Test
             }
 
             //act
-            Array.Sort(myArray);
+            SortingArray.Sort(myArray);
 
             //assert
             CollectionAssert.AreEqual(array,myArray);
@@ -121,7 +122,7 @@ namespace SortingTest.Test
             int[] myArray = new[] { 2, 4, 3, 1, 6, 5 };
 
             //act
-            Array.Sort(myArray);
+            SortingArray.Sort(myArray);
 
             //assert
             CollectionAssert.AreEqual(array, myArray);
@@ -137,7 +138,7 @@ namespace SortingTest.Test
             int[] myArray = new[] { 2, 4, 3, 1, 5 };
 
             //act
-            Array.Sort(myArray);
+            SortingArray.Sort(myArray);
 
             //assert
             CollectionAssert.AreEqual(array, myArray);
@@ -153,7 +154,7 @@ namespace SortingTest.Test
             int[] myArray = new[] { 0, 4, 3, 0, 6, 5 };
 
             //act
-            Array.Sort(myArray);
+            SortingArray.Sort(myArray);
 
             //assert
             CollectionAssert.AreEqual(array, myArray);
@@ -173,7 +174,7 @@ namespace SortingTest.Test
                 myArray[i] = rand.Next(10, 100);
             }
             //act
-            Array.Sort(myArray);
+            SortingArray.Sort(myArray);
 
             bool flag = true;
 
