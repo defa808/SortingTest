@@ -17,17 +17,18 @@ namespace SortingTest
 
         public SortingArray(int [] arr)
         {
-            if(arr.Length == 0)
-            {
-                throw new InvalidOperationException("Collection is not set");
-
-            }
+            
             _collectionArray = arr;
             
         }
 
         public void Sort()
         {
+            if (_collectionArray.Length == 0)
+            {
+                throw new InvalidOperationException("Collection is not set");
+            }
+
             for (int i = _collectionArray.Length - 1; i >= 0; i--)
             {
                 for (int j = 0; j < i; j++)

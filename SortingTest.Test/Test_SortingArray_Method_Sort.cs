@@ -6,6 +6,7 @@ namespace SortingTest.Test
     [TestClass]
     public class Test_SortingArray_Method_Sort
     {
+        #region TestsForMethodSort
 
         [TestMethod]
         public void Sort_IntArray_CorrectArray()
@@ -74,10 +75,41 @@ namespace SortingTest.Test
             //act
             instance.Sort();
 
-            
+        }
+        #endregion
 
+        #region TestsForMethodAdd
+        [TestMethod]
+        public void Add_OneElementInt_SuccessfullyAdding()
+        {
+            //arrange
+            int[] actualArray = new int[0];
+            SortingArray instance = new SortingArray(actualArray);
+            int[] expectedArray = new[] { 10 };
+
+            //act
+            instance.Add(10);
+
+            //assert
+            CollectionAssert.AreEqual(instance.CollectionArray, expectedArray);
         }
 
+        [TestMethod]
+        public void Add_OneElementNegativeNumber_SuccessfullyAdding()
+        {
+            //arrange
+            int[] actualArray = new int[0];
+            SortingArray instance = new SortingArray(actualArray);
+            int[] expectedArray = new[] { -10 };
+
+            //act
+            instance.Add(-10);
+
+            //assert
+            CollectionAssert.AreEqual(instance.CollectionArray, expectedArray);
+        }
+
+        #endregion
 
     }
 }
