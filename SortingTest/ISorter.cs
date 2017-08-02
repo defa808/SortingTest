@@ -9,6 +9,5 @@ namespace SortingTest
     public interface ISorter
     {
         void Sort();
-
     }
 }
