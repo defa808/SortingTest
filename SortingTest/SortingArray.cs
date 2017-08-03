@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace SortingTest
 {
@@ -17,7 +18,7 @@ namespace SortingTest
 
         public SortingArray(int[] arr)
         {
-            if(arr.Length == 0)
+            if (arr.Length == 0)
             {
                 throw new InvalidOperationException("Collection is not set");
 
@@ -28,20 +29,20 @@ namespace SortingTest
 
         public void Sort()
         {
-            for (int i = _collectionArray.Length - 1; i >= 0; i--)
-            {
-                for (int j = 0; j < i; j++)
-                {
-                    if (_collectionArray[j] > _collectionArray[j + 1])
-                    {
-                        int tmp = _collectionArray[j];
-                        _collectionArray[j] = _collectionArray[j + 1];
-                        _collectionArray[j + 1] = tmp;
-                    }
-                }
-            }
+            //for (int i = _collectionArray.Length - 1; i >= 0; i--)
+            //{
+            //    for (int j = 0; j < i; j++)
+            //    {
+            //        if (_collectionArray[j] > _collectionArray[j + 1])
+            //        {
+            //            int tmp = _collectionArray[j];
+            //            _collectionArray[j] = _collectionArray[j + 1];
+            //            _collectionArray[j + 1] = tmp;
+            //        }
+            //    }
+            //}
             //throw new System.NotImplementedException();
-            //_collectionArray = ParallelSort(_collectionArray);
+            QuickSort(0, _collectionArray.Length - 1);
         }
 
 
@@ -51,32 +52,28 @@ namespace SortingTest
 
         }
 
-        static int[] ParallelSort(int[] array)
+        void QuickSort(int a, int b)
         {
-            if (array.Length == 1)
-                return array;
-            int midPoint = array.Length / 2;
-            return ParallelSort(ParallelSort(array.Take(midPoint).ToArray()), ParallelSort(array.Skip(midPoint).ToArray()));
+            if (a >= b) return;
+            int c = partition(a, b);
+            QuickSort(a, c - 1);
+            QuickSort(c + 1, b);
         }
 
-        static int[] ParallelSort(int[] array1, int[] array2)
+        int partition(int a, int b)
         {
-            int a = 0, b = 0;
-            int[] merged = new int[array1.Length + array2.Length];
-            for (int i = 0; i < array1.Length + array2.Length; i++)
+            int i = a;
+            for (int j = a; j <= b; j++)
             {
-                if (b.CompareTo(array2.Length) < 0 && a.CompareTo(array1.Length) < 0)
-                    if (array1[a].CompareTo(array2[b]) > 0)
-                        merged[i] = array2[b++];
-                    else
-                        merged[i] = array1[a++];
-                else
-                    if (b < array2.Length)
-                    merged[i] = array2[b++];
-                else
-                    merged[i] = array1[a++];
+                if (_collectionArray[j] <= _collectionArray[b])
+                {
+                    int t = _collectionArray[i];
+                    _collectionArray[i] = _collectionArray[j];
+                    _collectionArray[j] = t;
+                    i++;
+                }
             }
-            return merged;
+            return i - 1;
         }
     }
 }

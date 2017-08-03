@@ -64,6 +64,25 @@ namespace SortingTest.Test
         }
 
         [TestMethod]
+        public void Sort_BigIntData_CorrectArray()
+        {
+            //arrange
+            int[] actualArray = new int[10000000];
+            int[] expectedArray = new int[10000000];
+            Random r = new Random();
+            for (int i = 0; i < 10000000; i++)
+            {
+                actualArray[i] = expectedArray[i] = r.Next(10000000);
+            }
+            Array.Sort(expectedArray);
+            SortingArray instance = new SortingArray(actualArray);
+            //act
+            instance.Sort();
+            //assert 
+            CollectionAssert.AreEqual(instance.CollectionArray, expectedArray);
+        }
+
+        [TestMethod]
         [ExpectedException(typeof(InvalidOperationException))]
         public void Sort_IntArrayEmpty_ExpectedException()
         {
@@ -73,9 +92,6 @@ namespace SortingTest.Test
             SortingArray instance = new SortingArray(actualArray);
             //act
             instance.Sort();
-
-            
-
         }
 
 
