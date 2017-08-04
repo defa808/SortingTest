@@ -85,12 +85,12 @@ namespace SortingTest
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();  //return this as IEnumerator;
+            return this as IEnumerator;
         }
 
         public IEnumerator GetEnumerator()
         {
-            throw new NotImplementedException();  //return new SortingArray(_collectionArray);
+           return new SortingArray(_collectionArray);
         }
 
 
