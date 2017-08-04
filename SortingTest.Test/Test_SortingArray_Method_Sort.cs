@@ -1,5 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections;
+using System.Linq;
 
 namespace SortingTest.Test
 {
@@ -111,72 +113,8 @@ namespace SortingTest.Test
 
         #endregion
 
-        #region Tests_Current
-        [TestMethod]
-        public void Current_OneElement_ExpectedOneElement()
-        {
-            //arrange
-            int[] array = new[] { 1 };
-            object[] expectedArray = new object[] { 1 };
-            object[] actualArray = new object[0];
+        #region Tests_Current will add
 
-            //act
-            SortingArray instance = new SortingArray(array);
-            int i = 0;
-            while (instance.MoveNext())
-            {
-                actualArray[i] = instance.Current;
-                i++;
-            }
-
-            //assert
-            Assert.AreEqual(expectedArray, actualArray);
-
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(InvalidOperationException))]
-        public void Current_EmptyCollection_ExpectedException()
-        {
-            //arrange
-            int[] array = new int[0];
-            object[] expectedArray = new object[0];
-            object[] actualArray = new object[0];
-
-            //act
-            SortingArray instance = new SortingArray(array);
-            int i = 0;
-            while (instance.MoveNext())
-            {
-                actualArray[i] = instance.Current;
-                i++;
-            }
-
-           
-
-        }
-
-        [TestMethod]
-        public void Current_FullCollection_RightElement()
-        {
-            //arrange
-            int[] array = new[] { 1, 2, 3 };
-            object[] expectedArray = new object[] { 1, 2, 3 };
-            object[] actualArray = new object[0];
-
-            //act
-            SortingArray instance = new SortingArray(array);
-            int i = 0;
-            while (instance.MoveNext())
-            {
-                actualArray[i] = instance.Current;
-                i++;
-            }
-
-            //assert
-            Assert.AreEqual(expectedArray, actualArray);
-
-        }
 
         #endregion
 
@@ -207,6 +145,28 @@ namespace SortingTest.Test
             Assert.IsFalse(flag);
 
         }
+        #endregion
+
+        #region Tests_GetEnumerator
+
+        [TestMethod]
+        public void GetEnumerator_FirstFifthNumbers_CorrectArrays()
+        {
+            int[] array = new[] { 1, 2, 3, 4, 5 };
+
+            SortingArray instance = new SortingArray(array);
+
+            IEnumerable temp = (IEnumerable)instance.GetEnumerator();
+            var actualArray = temp.Cast<int>().Take(15).ToArray();
+
+
+            CollectionAssert.AreEqual(
+                new[] { 1, 2, 3, 4, 5 },
+                actualArray
+                );
+
+        }
+
         #endregion
 
     }

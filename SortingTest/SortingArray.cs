@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SortingTest
 {
-    public class SortingArray : ISorter, IEnumerator
+    public class SortingArray : ISorter, IEnumerator, IEnumerable
     {
 
         private int[] _collectionArray;
@@ -18,7 +18,14 @@ namespace SortingTest
 
         int position = -1;
 
-        public object Current => throw new NotImplementedException();
+        public object Current
+        {
+            get {
+                if (_collectionArray.Length == 0)
+                    throw new InvalidOperationException("Collection is not set");
+
+                return _collectionArray[position]; }
+        }
 
         public SortingArray(int [] arr)
         {
@@ -75,5 +82,17 @@ namespace SortingTest
         {
             position = -1;
         }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            throw new NotImplementedException();  //return this as IEnumerator;
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            throw new NotImplementedException();  //return new SortingArray(_collectionArray);
+        }
+
+
     }
 }
