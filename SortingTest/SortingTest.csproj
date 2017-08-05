@@ -38,9 +38,11 @@
     <!-- A reference to the entire .NET Framework is automatically included -->
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InsertSorter.cs" />
     <Compile Include="ISorteble.cs" />
     <Compile Include="ISorter.cs" />
-    <Compile Include="Sorter.cs" />
+    <Compile Include="QuickSorter.cs" />
+    <Compile Include="BubbleSorter.cs" />
     <Compile Include="SortingArray.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

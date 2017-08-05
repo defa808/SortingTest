@@ -7,7 +7,7 @@ using System.Linq;
 namespace SortingTest.Test
 {
     [TestClass]
-    public class Test_Sorter
+    public class SorterTest
     {
         #region Tests_Sort
 
@@ -18,7 +18,7 @@ namespace SortingTest.Test
             // arrange
             var expectedArray = new[] { 1, 2, 3 };
             var actualArray = new[] { 3, 1, 2 };
-            var sorter = new Sorter<int>();
+            var sorter = new InsertSorter<int>();
 
             // act
             var actual = sorter.Sort(actualArray);
@@ -34,7 +34,7 @@ namespace SortingTest.Test
             //arrange
             int[] actualArray = new[] { 4, 3, 2, 5, -1, -2 };
             int[] expectedArray = new[] { -2, -1, 2, 3, 4, 5 };
-            var sorter = new Sorter<int>();
+            var sorter = new InsertSorter<int>();
 
             //act
             var actual = sorter.Sort(actualArray);
@@ -49,7 +49,7 @@ namespace SortingTest.Test
             //arrange
             int[] actualArray = new[] { 1, 2, 1 };
             int[] expectedArray = new[] { 1, 1, 2 };
-            var sorter = new Sorter<int>();
+            var sorter = new InsertSorter<int>();
 
             //act
             var actual = sorter.Sort(actualArray);
@@ -65,7 +65,7 @@ namespace SortingTest.Test
             //arrange
             int[] actualArray = new[] { 1 };
             int[] expectedArray = new[] { 1 };
-            var sorter = new Sorter<int>();
+            var sorter = new InsertSorter<int>();
 
             //act
             var actual = sorter.Sort(actualArray);
@@ -81,7 +81,7 @@ namespace SortingTest.Test
         {
             //arrange
             int[] actualArray = new int[0];
-            var sorter = new Sorter<int>();
+            var sorter = new InsertSorter<int>();
 
             //act
             var actual = sorter.Sort(actualArray);
@@ -95,7 +95,7 @@ namespace SortingTest.Test
             //arrange
             var expectedArray = new [] { null, "he", "hello","window" };
             var actualArray = new [] { "he", "hello", null, "window" };
-            var sorter = new Sorter<string>();
+            var sorter = new InsertSorter<string>();
 
             //act
             var actual = sorter.Sort(actualArray);
@@ -111,7 +111,7 @@ namespace SortingTest.Test
             //arrange
             var expectedArray = new[] { "a", "b", "c" };
             var actualArray = new[] { "b", "a", "c" };
-            var sorter = new Sorter<string>();
+            var sorter = new InsertSorter<string>();
 
             //act
             var actual = sorter.Sort(actualArray);
@@ -127,7 +127,7 @@ namespace SortingTest.Test
         {
             //arrange
             var actualArray = new string [0];
-            var sorter = new Sorter<string>();
+            var sorter = new InsertSorter<string>();
 
             //act
             var actual = sorter.Sort(actualArray);
@@ -150,7 +150,7 @@ namespace SortingTest.Test
                 expectedArray[i] = i;
             }
 
-            var sorter = new Sorter<int>();
+            var sorter = new InsertSorter<int>();
 
             // diagnostic
             var sw = new Stopwatch();
