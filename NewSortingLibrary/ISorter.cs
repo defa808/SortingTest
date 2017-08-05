@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SortingTest
+namespace SortingLibrary
 {
-    interface ISorter<T>
+    public interface ISorter<T>
     {
         IEnumerable Sort(IEnumerable array);
     }

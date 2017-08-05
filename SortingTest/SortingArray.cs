@@ -6,32 +6,38 @@ using System.Text;
 
 namespace SortingTest
 {
-    public class SortingArray : ISorter, IEnumerator, IEnumerable
+    public class SortingArray : ISorteble, IEnumerator, IEnumerable, ICollection
     {
 
         private int[] _collectionArray;
 
-        public int[] CollectionArray
-        {
-            get => _collectionArray;
-        }
+        public int[] CollectionArray => _collectionArray;
+
 
         int position = -1;
 
         public object Current
         {
-            get {
+            get
+            {
                 if (_collectionArray.Length == 0)
                     throw new InvalidOperationException("Collection is not set");
 
-                return _collectionArray[position]; }
+                return _collectionArray[position];
+            }
         }
 
-        public SortingArray(int [] arr)
+        public int Count => _collectionArray.Length;
+
+        public bool IsSynchronized => throw new NotImplementedException();
+
+        public object SyncRoot => throw new NotImplementedException();
+
+        public SortingArray(int[] arr)
         {
-            
+
             _collectionArray = arr;
-            
+
         }
 
         public void Sort()
@@ -58,8 +64,7 @@ namespace SortingTest
 
         public void Add(int item)
         {
-            //throw new NotImplementedException();
-            int[] temp = new int[_collectionArray.Length + 1];
+            var temp = new int[_collectionArray.Length + 1];
             _collectionArray.CopyTo(temp, 0);
             temp[_collectionArray.Length] = item;
             _collectionArray = temp;
@@ -90,9 +95,15 @@ namespace SortingTest
 
         public IEnumerator GetEnumerator()
         {
-           return new SortingArray(_collectionArray);
+            return new SortingArray(_collectionArray);
+        }
+
+        public void CopyTo(Array array, int index)
+        {
+            throw new NotImplementedException();
         }
 
 
+        
     }
 }

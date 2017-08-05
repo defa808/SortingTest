@@ -5,6 +5,7 @@ using System.Linq;
 
 namespace SortingTest.Test
 {
+    /*
     [TestClass]
     public class Test_SortingArray_Method_Sort
     {
@@ -130,14 +131,7 @@ namespace SortingTest.Test
             bool flag = false;
             for (int i = 0; i < 4; i++)
             {
-                if (instance.MoveNext())
-                {
-                    flag = true;
-                }
-                else
-                {
-                    flag = false;
-                }
+                flag = instance.MoveNext();
 
             }
 
@@ -147,27 +141,16 @@ namespace SortingTest.Test
         }
         #endregion
 
-        #region Tests_GetEnumerator
+        
 
         [TestMethod]
-        public void GetEnumerator_FirstFifthNumbers_CorrectArrays()
+        public void _CorrectArrays()
         {
-            int[] array = new[] { 1, 2, 3, 4, 5 };
-
-            SortingArray instance = new SortingArray(array);
-
-            IEnumerable temp = (IEnumerable)instance.GetEnumerator();
-            var actualArray = temp.Cast<int>().Take(15).ToArray();
-
-
-            CollectionAssert.AreEqual(
-                new[] { 1, 2, 3, 4, 5 },
-                actualArray
-                );
-
+            var blabla = new SortingArray(null);
         }
 
-        #endregion
 
     }
+
+*/
 }

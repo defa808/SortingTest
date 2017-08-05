@@ -5,10 +5,10 @@
     <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{97152477-470E-4176-9786-6B1D041A880E}</ProjectGuid>
+    <ProjectGuid>{D3ABABFB-4B16-4194-88BA-F2DAE0DC9A32}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>SortingTest</RootNamespace>
-    <AssemblyName>SortingTest</AssemblyName>
+    <RootNamespace>NewSortingLibrary</RootNamespace>
+    <AssemblyName>NewSortingLibrary</AssemblyName>
     <DefaultLanguage>ru-RU</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -40,8 +40,8 @@
   <ItemGroup>
     <Compile Include="ISorteble.cs" />
     <Compile Include="ISorter.cs" />
-    <Compile Include="SortingArray.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SortingLibrary.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
 </Project>
