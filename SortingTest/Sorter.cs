@@ -9,9 +9,9 @@ namespace SortingTest
 {
     public class Sorter<T> : ISorter<T>
     {
-        public IEnumerable<T> Sort(IEnumerable array)
+        public IEnumerable<T> Sort(T[] array)
         {
-            throw new NotImplementedException();
+            throw new InvalidOperationException();
         }
     }
 }

@@ -93,9 +93,9 @@ namespace SortingTest.Test
         public void Sort_StringArrayWithNull_CorrectArray()
         {
             //arrange
-            var expectedArray = new[] { null, "he", "hello","window" };
-            var actualArray = new[] { "he", "hello", null, "window" };
-            var sorter = new Sorter<int>();
+            var expectedArray = new [] { null, "he", "hello","window" };
+            var actualArray = new [] { "he", "hello", null, "window" };
+            var sorter = new Sorter<string>();
 
             //act
             var actual = sorter.Sort(actualArray);
@@ -111,7 +111,7 @@ namespace SortingTest.Test
             //arrange
             var expectedArray = new[] { "abc", "he", "hello", "window" };
             var actualArray = new[] { "he", "hello", "window", "abc" };
-            var sorter = new Sorter<int>();
+            var sorter = new Sorter<string>();
 
             //act
             var actual = sorter.Sort(actualArray);
@@ -127,7 +127,7 @@ namespace SortingTest.Test
         {
             //arrange
             var actualArray = new string [0];
-            var sorter = new Sorter<int>();
+            var sorter = new Sorter<string>();
 
             //act
             var actual = sorter.Sort(actualArray);
