@@ -40,6 +40,7 @@
   <ItemGroup>
     <Compile Include="ISorteble.cs" />
     <Compile Include="ISorter.cs" />
+    <Compile Include="Sorter.cs" />
     <Compile Include="SortingArray.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

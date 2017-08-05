@@ -7,8 +7,11 @@ using System.Threading.Tasks;
 
 namespace SortingTest
 {
-    public interface ISorter<T>
+    public class Sorter<T> : ISorter<T>
     {
-        IEnumerable<T> Sort(IEnumerable array);
+        public IEnumerable<T> Sort(IEnumerable array)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace SortingTest.Test
 {
-    /*
+    
     [TestClass]
     public class Test_SortingArray_Method_Sort
     {
@@ -114,11 +114,6 @@ namespace SortingTest.Test
 
         #endregion
 
-        #region Tests_Current will add
-
-
-        #endregion
-
         #region Tests_MoveNext
         [TestMethod]
         public void MoveNext_FinityCalling()
@@ -141,16 +136,9 @@ namespace SortingTest.Test
         }
         #endregion
 
-        
-
-        [TestMethod]
-        public void _CorrectArrays()
-        {
-            var blabla = new SortingArray(null);
-        }
 
 
     }
 
-*/
+
 }
