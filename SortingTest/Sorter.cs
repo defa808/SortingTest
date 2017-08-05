@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 namespace SortingTest
 {
     public class Sorter<T> : ISorter<T>
+        where T:IComparable
     {
         public IEnumerable<T> Sort(T[] array)
         {

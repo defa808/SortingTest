@@ -109,8 +109,8 @@ namespace SortingTest.Test
         public void Sort_StringArray_CorrectArray()
         {
             //arrange
-            var expectedArray = new[] { "abc", "he", "hello", "window" };
-            var actualArray = new[] { "he", "hello", "window", "abc" };
+            var expectedArray = new[] { "a", "b", "c" };
+            var actualArray = new[] { "b", "a", "c" };
             var sorter = new Sorter<string>();
 
             //act
@@ -123,7 +123,7 @@ namespace SortingTest.Test
 
         [TestMethod]
         [ExpectedException(typeof(InvalidOperationException))]
-        public void Sort_StringArrayEmpty_CorrectArray()
+        public void Sort_StringArrayEmpty_ExpectedException()
         {
             //arrange
             var actualArray = new string [0];
@@ -138,11 +138,11 @@ namespace SortingTest.Test
         public void Sort_HugeArray_SortedArray()
         {
             // arrange
-            var count = 20000000;
+            var count = 2000000;
             var actualArray = new int[count];
-            for (var i = actualArray.Length; i >= 0; --i)
+            for (var i = actualArray.Length-1; i >= 0; i--)
             {
-                actualArray[actualArray.Length-i] = i;
+                actualArray[actualArray.Length-1-i] = i;
             }
             var expectedArray = new int[count];
             for (int i = 0; i < count; i++)
