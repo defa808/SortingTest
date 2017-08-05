@@ -138,7 +138,7 @@ namespace SortingTest.Test
         public void Sort_HugeArray_SortedArray()
         {
             // arrange
-            var count = 2000000;
+            var count = 20000;
             var actualArray = new int[count];
             for (var i = actualArray.Length-1; i >= 0; i--)
             {
