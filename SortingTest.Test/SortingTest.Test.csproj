@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Sort.Test.cs" />
+    <Compile Include="SortingArrayTests.cs" />
     <Compile Include="Test_SortingArray_Method_Sort.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

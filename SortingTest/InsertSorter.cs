@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace SortingTest
 {
     public class InsertSorter<T> : ISorter<T>
-        where T : IComparable
+        where T : IComparable<T>
     {
         public IEnumerable<T> Sort(T[] array)
         {
