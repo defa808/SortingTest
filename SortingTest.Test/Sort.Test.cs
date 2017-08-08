@@ -15,20 +15,25 @@ namespace SortingTest.Test
         #region Tests_Sort
 
         [TestMethod]
-        public  void Sort_SortedIntArray_SameArray()
+        public void Sort_SortedIntArray_SameArray()
         {
 
             // arrange
             var expectedArray = new[] { 1, 2, 3 };
             var actualArray = new[] { 3, 1, 2 };
+
             var sorter = GetInstance<int>();
 
             // act
             var actual = sorter.Sort(actualArray);
 
+            CollectionAssert.AreEqual(expectedArray, actual.ToArray());
+
+
+
+
 
             // assert
-            CollectionAssert.AreEqual(expectedArray, actual.ToArray());
         }
 
         [TestMethod]
@@ -96,8 +101,8 @@ namespace SortingTest.Test
         public void Sort_StringArrayWithNull_CorrectArray()
         {
             //arrange
-            var expectedArray = new [] { null, "he", "hello","window" };
-            var actualArray = new [] { "he", "hello", null, "window" };
+            var expectedArray = new[] { null, "he", "hello", "window" };
+            var actualArray = new[] { "he", "hello", null, "window" };
             var sorter = GetInstance<string>();
 
             //act
@@ -129,45 +134,12 @@ namespace SortingTest.Test
         public void Sort_StringArrayEmpty_ExpectedException()
         {
             //arrange
-            var actualArray = new string [0];
+            var actualArray = new string[0];
             var sorter = GetInstance<string>();
 
             //act
             var actual = sorter.Sort(actualArray);
 
-        }
-
-        [TestMethod]
-        public void Sort_HugeArray_SortedArray()
-        {
-            // arrange
-            var count = 20000;
-            var actualArray = new int[count];
-            for (var i = actualArray.Length-1; i >= 0; i--)
-            {
-                actualArray[actualArray.Length-1-i] = i;
-            }
-            var expectedArray = new int[count];
-            for (int i = 0; i < count; i++)
-            {
-                expectedArray[i] = i;
-            }
-
-            var sorter = GetInstance<int>();
-
-            // diagnostic
-            var sw = new Stopwatch();
-            sw.Start();
-
-            // act
-            var actual = sorter.Sort(actualArray);
-
-
-            sw.Stop();
-            Trace.WriteLine($"Sorting time = {new TimeSpan(sw.ElapsedTicks):T}");
-
-            // assert
-            CollectionAssert.AreEqual(expectedArray, actual.ToArray());
         }
 
 

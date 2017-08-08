@@ -3,11 +3,14 @@
 namespace SortingTest.Test
 {
     [TestClass]
-    public class SortingArrayTests: SorterTest
+    public class InsertSortingArrayTests : SorterTest
     {
+
         protected override ISorter<T> GetInstance<T>()
         {
-            return new BubbleSorter<T>();
+            return new InsertSorter<T>();
         }
+
+
     }
 }
