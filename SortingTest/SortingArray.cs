@@ -6,8 +6,12 @@ using System.Text;
 
 namespace SortingTest
 {
-    public class SortingArray : ISorteble, IEnumerator, IEnumerable, ICollection
+    public class SortingArray : ISorteble, IEnumerator, IEnumerable
     {
+
+        private ISorter<int> _sorter = new BubbleSorter<int>();
+
+        public ISorter<int> Sorter { set { _sorter = value; } get => _sorter; }
 
         private int[] _collectionArray;
 
@@ -40,58 +44,18 @@ namespace SortingTest
 
         }
 
-        public void Sort()
+        public  void Sort()
         {
-            this.Sort(3);
+            var temp = _sorter.Sort(_collectionArray);
+            var i = 0;
+            foreach (var item in temp)
+            {
+                _collectionArray[i] = item;
+                i++;
+            }
         }
 
 
-        public void Sort(int x)
-        {
-            if (_collectionArray.Length == 0)
-            {
-                throw new InvalidOperationException("Collection is not set");
-            }
-
-            if (x == 1)
-            {
-                var sorter = new BubbleSorter<int>();
-                var temp = sorter.Sort(_collectionArray);
-                var i = 0;
-                foreach (var item in temp)
-                {
-                    _collectionArray[i] = item;
-                    ++i;
-                }
-            }
-            else
-            {
-                if (x == 2)
-                {
-                    var sorter = new InsertSorter<int>();
-                    var temp = sorter.Sort(_collectionArray);
-                    var i = 0;
-                    foreach (var item in temp)
-                    {
-                        _collectionArray[i] = item;
-                        ++i;
-                    }
-                }
-                else
-                {
-                    var sorter = new QuickSorter<int>();
-                    var temp = sorter.Sort(_collectionArray);
-                    var i = 0;
-                    foreach (var item in temp)
-                    {
-                        _collectionArray[i] = item;
-                        ++i;
-                    }
-                }
-            }
-
-
-        }
 
 
         public void Add(int item)
@@ -130,11 +94,8 @@ namespace SortingTest
             return new SortingArray(_collectionArray);
         }
 
-        public void CopyTo(Array array, int index)
-        {
-            throw new NotImplementedException();
-        }
 
-        
+
+
     }
 }
