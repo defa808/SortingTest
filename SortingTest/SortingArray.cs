@@ -42,23 +42,55 @@ namespace SortingTest
 
         public void Sort()
         {
+            this.Sort(3);
+        }
+
+
+        public void Sort(int x)
+        {
             if (_collectionArray.Length == 0)
             {
                 throw new InvalidOperationException("Collection is not set");
             }
 
-            for (int i = _collectionArray.Length - 1; i >= 0; i--)
+            if (x == 1)
             {
-                for (int j = 0; j < i; j++)
+                var sorter = new BubbleSorter<int>();
+                var temp = sorter.Sort(_collectionArray);
+                var i = 0;
+                foreach (var item in temp)
                 {
-                    if (_collectionArray[j] > _collectionArray[j + 1])
+                    _collectionArray[i] = item;
+                    ++i;
+                }
+            }
+            else
+            {
+                if (x == 2)
+                {
+                    var sorter = new InsertSorter<int>();
+                    var temp = sorter.Sort(_collectionArray);
+                    var i = 0;
+                    foreach (var item in temp)
                     {
-                        int tmp = _collectionArray[j];
-                        _collectionArray[j] = _collectionArray[j + 1];
-                        _collectionArray[j + 1] = tmp;
+                        _collectionArray[i] = item;
+                        ++i;
+                    }
+                }
+                else
+                {
+                    var sorter = new QuickSorter<int>();
+                    var temp = sorter.Sort(_collectionArray);
+                    var i = 0;
+                    foreach (var item in temp)
+                    {
+                        _collectionArray[i] = item;
+                        ++i;
                     }
                 }
             }
+
+
         }
 
 
@@ -102,7 +134,6 @@ namespace SortingTest
         {
             throw new NotImplementedException();
         }
-
 
         
     }

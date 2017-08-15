@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SortingTest.Test
+namespace SortingTest
 {
     public class QuickSorter<T> : ISorter<T>
         where T : IComparable<T>
