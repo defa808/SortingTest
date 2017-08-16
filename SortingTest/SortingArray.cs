@@ -10,7 +10,7 @@ namespace SortingTest
         where T:IComparable<T>
     {
 
-        private ISorter<T> _sorter = null;
+        private ISorter<T> _sorter = new BubbleSorter<T>();
 
         public ISorter<T> Sorter { set { _sorter = value; } get => _sorter; }
 
