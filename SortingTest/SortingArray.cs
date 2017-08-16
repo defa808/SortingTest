@@ -10,7 +10,7 @@ namespace SortingTest
         where T:IComparable<T>
     {
 
-        private ISorter<T> _sorter = new BubbleSorter<T>();
+        private ISorter<T> _sorter = null;
 
         public ISorter<T> Sorter { set { _sorter = value; } get => _sorter; }
 
@@ -43,6 +43,11 @@ namespace SortingTest
 
         public  void Sort()
         {
+            if (_sorter == null)
+            {
+                throw new InvalidOperationException("Sorter is null");
+            }
+
             var temp = _sorter.Sort(_collectionArray);
             var i = 0;
             foreach (var item in temp)
