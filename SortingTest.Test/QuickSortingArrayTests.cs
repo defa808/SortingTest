@@ -3,7 +3,7 @@
 namespace SortingTest.Test
 {
     [TestClass]
-    public class QuickSortingArrayTests : SortTest
+    public class QuickSortingArrayTests : SorterTest
     {
 
         protected override ISorter<T> GetInstance<T>()

@@ -7,7 +7,7 @@ using System.Linq;
 namespace SortingTest.Test
 {
     [TestClass]
-    public abstract class SortTest
+    public abstract class SorterTest
     {
         protected abstract ISorter<T> GetInstance<T>()
             where T : IComparable<T>;

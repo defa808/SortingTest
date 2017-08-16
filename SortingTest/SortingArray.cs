@@ -6,17 +6,16 @@ using System.Text;
 
 namespace SortingTest
 {
-    public class SortingArray<T> : ISorteble, IEnumerator, IEnumerable
-        where T:IComparable<T>
+    public class SortingArray : ISorteble, IEnumerator, IEnumerable
     {
 
-        private ISorter<T> _sorter = null;
+        private ISorter<int> _sorter = new BubbleSorter<int>();
 
-        public ISorter<T> Sorter { set { _sorter = value; } get => _sorter; }
+        public ISorter<int> Sorter { set { _sorter = value; } get => _sorter; }
 
-        private T[] _collectionArray;
+        private int[] _collectionArray;
 
-        public T[] CollectionArray => _collectionArray;
+        public int[] CollectionArray => _collectionArray;
 
 
         int position = -1;
@@ -34,8 +33,12 @@ namespace SortingTest
 
         public int Count => _collectionArray.Length;
 
-        public SortingArray(T[] arr)
-        {   
+        public bool IsSynchronized => throw new NotImplementedException();
+
+        public object SyncRoot => throw new NotImplementedException();
+
+        public SortingArray(int[] arr)
+        {
 
             _collectionArray = arr;
 
@@ -55,9 +58,9 @@ namespace SortingTest
 
 
 
-        public void Add(T item)
+        public void Add(int item)
         {
-            var temp = new T[_collectionArray.Length + 1];
+            var temp = new int[_collectionArray.Length + 1];
             _collectionArray.CopyTo(temp, 0);
             temp[_collectionArray.Length] = item;
             _collectionArray = temp;
@@ -88,7 +91,7 @@ namespace SortingTest
 
         public IEnumerator GetEnumerator()
         {
-            return new SortingArray<T>(_collectionArray);
+            return new SortingArray(_collectionArray);
         }
 
 
