@@ -55,6 +55,7 @@
     <Compile Include="BubbleSortingArrayTests.cs" />
     <Compile Include="Test_SortingArray_Method_Sort.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ThreadSafe.Test.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -14,7 +14,6 @@ namespace SortingTest
 
         private List<T> _collectionArray;
 
-
         public ISorter<T> Sorter { set => _sorter = value; get => _sorter; }
 
 
@@ -45,21 +44,22 @@ namespace SortingTest
 
         public void Sort()
         {
-            if (_sorter == null)
-            {
-                throw new InvalidOperationException("Sorter is null");
-            }
+            
+                if (_sorter == null)
+                {
+                    throw new InvalidOperationException("Sorter is null");
+                }
 
-            _collectionArray = _sorter.Sort(_collectionArray.ToArray());
+                _collectionArray = _sorter.Sort(_collectionArray.ToArray());
         }
 
 
-        public  void Add(T value)
+        public void Add(T value)
         {
             _collectionArray.Add(value);
         }
 
-        
+
 
         public bool MoveNext()
         {
