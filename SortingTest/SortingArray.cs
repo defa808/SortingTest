@@ -60,7 +60,7 @@ namespace SortingTest
 
         public void Add(T value)
         {
-            //lock (_collectionArray)
+            lock (_collectionArray)
                 _collectionArray.Add(value);
             
 

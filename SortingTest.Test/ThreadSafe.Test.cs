@@ -13,6 +13,16 @@ namespace SortingTest.Test
     public class ThreadSafe
     {
 
+        private SortingArray<int> myInstance;
+
+
+        [TestInitialize]
+        public void Setup()
+        {
+            var array = new int[0];
+            myInstance = new SortingArray<int>(array);
+        }
+
         [TestMethod]
         public void ThreadingSafe_TwoThread_CorrectSorting()
         {
@@ -50,35 +60,29 @@ namespace SortingTest.Test
         public void ThreadingSafe_TwoOperationInDifferentThread_CorrectArray()
         {
             //Arrange
-            var expectedArray = new int[10000];
-            for (int i = 0; i < 10000; i++)
-            {
-                expectedArray[i] = 5;
-            }
-            var actualArray = new int[0];
-            SortingArray<int> instance = new SortingArray<int>(actualArray);
+            var t1 = new Thread(AddManyNumbers);
+            var t2 = new Thread(AddManyNumbers);
+
 
             //Act
-            ParameterizedThreadStart Add = new ParameterizedThreadStart(Addd);
-            Thread[] t = new Thread[10000];
-            for (int i = 0; i < 10000; i++)
-            {
-                t[i] = new Thread(Add);
-            }
-            for (int i = 0; i < 10000; i++)
-            {
-                t[i].Start(instance);
-            }
+            t1.Start();
+            t2.Start();
+
+            t1.Join();
+            t2.Join();
 
 
             //Assert
-            CollectionAssert.AreEqual(expectedArray, instance.CollectionArray);
+            Assert.AreEqual(20000, myInstance.Count);
 
 
         }
-        private void Addd(object a)
+        private void AddManyNumbers()
         {
-            (a as SortingArray<int>).Add(5);
+            for (int x = 0; x < 10000; x++)
+            {
+                myInstance.Add(x);
+            }
         }
     }
 }
