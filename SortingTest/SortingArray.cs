@@ -46,31 +46,31 @@ namespace SortingTest
 
         public void Sort()
         {
-            lock (locker)
-            {
+            //lock (locker)
+            //{
                 if (_sorter == null)
                 {
                     throw new InvalidOperationException("Sorter is null");
                 }
 
                 _collectionArray = _sorter.Sort(_collectionArray.ToArray());
-            }
+            //}
         }
 
 
         public void Add(T value)
         {
-            lock (locker)
-            {
+            //lock (_collectionArray)
                 _collectionArray.Add(value);
-            }
+            
+
         }
 
         public void RemoveLast()
         {
-            lock (locker) { 
+            //lock (_collectionArray)
                 _collectionArray.Remove(_collectionArray.Last());
-                }
+
         }
 
 

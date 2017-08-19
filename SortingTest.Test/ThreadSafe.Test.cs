@@ -17,19 +17,19 @@ namespace SortingTest.Test
         public void ThreadingSafe_TwoThread_CorrectSorting()
         {
             //Arrange
-            var actualArray = new int[100000];
-            for (int i = 0; i > 100000; i++)
+            var actualArray = new int[10000];
+            for (int i = 0; i > 10000; i++)
             {
-                actualArray[i] = 100000 - i;
+                actualArray[i] = 10000 - i;
             }
-            var expectedArray = new int[100000];
-            for (int i = 0; i > 100000; i++)
+            var expectedArray = new int[10000];
+            for (int i = 0; i > 10000; i++)
             {
-                actualArray[i] = i + 1;
+                expectedArray[i] = i + 1;
             }
 
             SortingArray<int> instance = new SortingArray<int>(actualArray);
-            instance.Sorter = new BubbleSorter<int>();
+            instance.Sorter = new QuickSorter<int>();
 
 
             //Act 
@@ -39,6 +39,7 @@ namespace SortingTest.Test
 
 
 
+            thread.Join();
 
             //Assert
             CollectionAssert.AreEqual(expectedArray, instance.CollectionArray);
@@ -49,23 +50,35 @@ namespace SortingTest.Test
         public void ThreadingSafe_TwoOperationInDifferentThread_CorrectArray()
         {
             //Arrange
-            var expectedArray = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 11 };
-            var actualArray = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
+            var expectedArray = new int[10000];
+            for (int i = 0; i < 10000; i++)
+            {
+                expectedArray[i] = 5;
+            }
+            var actualArray = new int[0];
             SortingArray<int> instance = new SortingArray<int>(actualArray);
 
-
             //Act
-            ThreadStart removeLast = new ThreadStart(instance.RemoveLast);
-
-            Thread thread = new Thread(removeLast);
-            thread.Start();
-            instance.Add(11);
-
+            ParameterizedThreadStart Add = new ParameterizedThreadStart(Addd);
+            Thread[] t = new Thread[10000];
+            for (int i = 0; i < 10000; i++)
+            {
+                t[i] = new Thread(Add);
+            }
+            for (int i = 0; i < 10000; i++)
+            {
+                t[i].Start(instance);
+            }
 
 
             //Assert
             CollectionAssert.AreEqual(expectedArray, instance.CollectionArray);
 
+
+        }
+        private void Addd(object a)
+        {
+            (a as SortingArray<int>).Add(5);
         }
     }
 }
