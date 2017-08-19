@@ -59,6 +59,11 @@ namespace SortingTest
             _collectionArray.Add(value);
         }
 
+        public void RemoveLast()
+        {
+            throw new NotImplementedException();
+        }
+
 
 
         public bool MoveNext()
@@ -85,6 +90,7 @@ namespace SortingTest
         {
             return new SortingArray<T>(_collectionArray);
         }
+
 
 
 

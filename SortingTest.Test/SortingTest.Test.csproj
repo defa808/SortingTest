@@ -60,6 +60,7 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Compile Include="Sorter.Test.cs" />
+    <Compile Include="RemoveLast.Test.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SortingTest\SortingTest.csproj">

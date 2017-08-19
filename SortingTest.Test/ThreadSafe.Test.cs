@@ -35,5 +35,26 @@ namespace SortingTest.Test
             CollectionAssert.AreEqual(expectedArray, instance.CollectionArray);
 
         }
+
+        [TestMethod]
+        public void ThreadingSafe_TwoOperationInDifferentThread_CorrectArray()
+        {
+            //Arrange
+            var expectedArray = new int[] { 1, 2, 3, 4, 1 };
+            var actualArray = new int[] { 1, 2, 3, 4 };
+            SortingArray<int> instance = new SortingArray<int>(actualArray);
+
+
+            //Act
+            Thread t = new Thread(new ThreadStart(instance.RemoveLast));
+            instance.Add(1);
+            t.Start();
+            instance.Add(1);
+
+
+            //Assert
+            CollectionAssert.AreEqual(expectedArray, instance.CollectionArray);
+
+        }
     }
 }
