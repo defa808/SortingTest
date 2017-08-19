@@ -26,7 +26,7 @@ namespace SortingTest.Test
             instance.Sort();
 
             //Assert
-            CollectionAssert.AreEqual(expectedArray, instance.CollectionArray);
+            Assert.AreEqual(expectedArray, instance);
 
         }
 
@@ -47,7 +47,7 @@ namespace SortingTest.Test
             instance.Sort();
 
             //Assert
-            CollectionAssert.AreEqual(expectedArray, instance.CollectionArray);
+            CollectionAssert.AreEqual(instance.CollectionArray, expectedArray);
 
         }
     }

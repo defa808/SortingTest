@@ -9,7 +9,7 @@ namespace SortingTest
     public class QuickSorter<T> : ISorter<T>
         where T : IComparable<T>
     {
-        public IEnumerable<T> Sort(T[] array)
+        public List<T> Sort(T[] array)
         {
             if (array.Length == 0)
             {
@@ -19,7 +19,7 @@ namespace SortingTest
             quicksort(array, 0, array.Length - 1);
 
 
-            return array;
+            return array.ToList();
         }
 
         private int partition(T[] m, int a, int b)

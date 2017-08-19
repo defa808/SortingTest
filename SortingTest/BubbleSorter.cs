@@ -10,7 +10,7 @@ namespace SortingTest
     public class BubbleSorter<T> : ISorter<T>
         where T : IComparable<T>
     {
-        public IEnumerable<T> Sort(T[] array)
+        public List<T> Sort(T[] array)
         {
             if (array.Length == 0)
             {
@@ -30,7 +30,7 @@ namespace SortingTest
                         }
                 }
             }
-            return array;
+            return array.ToList();
         }
     }
 }

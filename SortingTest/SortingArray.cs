@@ -7,16 +7,18 @@ using System.Text;
 namespace SortingTest
 {
     public class SortingArray<T> : ISorteble, IEnumerator, IEnumerable
-        where T:IComparable<T>
+        where T : IComparable<T>
     {
 
-        private ISorter<T> _sorter = null;
+        private ISorter<T> _sorter;
 
-        public ISorter<T> Sorter { set { _sorter = value; } get => _sorter; }
+        private List<T> _collectionArray;
 
-        private T[] _collectionArray;
 
-        public T[] CollectionArray => _collectionArray;
+        public ISorter<T> Sorter { set => _sorter = value; get => _sorter; }
+
+
+        public List<T> CollectionArray => _collectionArray;
 
 
         int position = -1;
@@ -25,60 +27,48 @@ namespace SortingTest
         {
             get
             {
-                if (_collectionArray.Length == 0)
+                if (_collectionArray.Count() == 0)
                     throw new InvalidOperationException("Collection is not set");
 
-                return _collectionArray[position];
+                return _collectionArray;
             }
         }
 
-        public int Count => _collectionArray.Length;
+        public int Count => _collectionArray.Count();
 
-        public SortingArray(T[] arr)
-        {   
+        public SortingArray(IEnumerable<T> arr)
+        {
 
-            _collectionArray = arr;
+            _collectionArray = arr.ToList();
 
         }
 
-        public  void Sort()
+        public void Sort()
         {
             if (_sorter == null)
             {
                 throw new InvalidOperationException("Sorter is null");
             }
 
-            var temp = _sorter.Sort(_collectionArray);
-            var i = 0;
-            foreach (var item in temp)
-            {
-                _collectionArray[i] = item;
-                i++;
-            }
+            _collectionArray = _sorter.Sort(_collectionArray.ToArray());
         }
 
 
-
-
-        public void Add(T item)
+        public  void Add(T value)
         {
-            var temp = new T[_collectionArray.Length + 1];
-            _collectionArray.CopyTo(temp, 0);
-            temp[_collectionArray.Length] = item;
-            _collectionArray = temp;
+            _collectionArray.Add(value);
         }
+
+        
 
         public bool MoveNext()
         {
-            if (position < _collectionArray.Length - 1)
+            if (position < _collectionArray.Count() - 1)
             {
                 position++;
                 return true;
             }
-            else
-            {
-                return false;
-            }
+            return false;
         }
 
         public void Reset()

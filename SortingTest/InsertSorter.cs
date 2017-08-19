@@ -9,7 +9,7 @@ namespace SortingTest
     public class InsertSorter<T> : ISorter<T>
         where T : IComparable<T>
     {
-        public IEnumerable<T> Sort(T[] array)
+        public List<T> Sort(T[] array)
         {
             if (array.Length == 0)
             {
@@ -26,7 +26,7 @@ namespace SortingTest
                 array[j + 1] = x;
             }
 
-            return array;
+            return array.ToList();
         }
     }
 }

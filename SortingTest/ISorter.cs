@@ -9,6 +9,6 @@ namespace SortingTest
 {
     public interface ISorter<T>
     {
-        IEnumerable<T> Sort(T[] array);
+        List<T> Sort(T[] array);
     }
 }
