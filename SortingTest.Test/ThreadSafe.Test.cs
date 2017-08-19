@@ -46,7 +46,7 @@ namespace SortingTest.Test
 
 
             //Act
-            Thread t = new Thread(new ThreadStart(instance.RemoveLast));
+            Thread t = new Thread(new ThreadStart(instance.Sort));
             instance.Add(1);
             t.Start();
             instance.Add(1);

@@ -61,7 +61,7 @@ namespace SortingTest
 
         public void RemoveLast()
         {
-            throw new NotImplementedException();
+            _collectionArray.Remove(_collectionArray.Last());
         }
 
 

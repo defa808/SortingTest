@@ -14,8 +14,8 @@ namespace SortingTest.Test
         public void RemoveLast_IntElement_CorrectArray()
         {
             //Arrange
-            var expectedArray = new int[] { 1, 2};
-            var actualArray = new int[] { 1, 2, 3 };
+            var expectedArray = new int[] { 1};
+            var actualArray = new int[] { 1, 1};
             SortingArray<int> instance = new SortingArray<int>(actualArray);
 
 
@@ -77,6 +77,7 @@ namespace SortingTest.Test
             CollectionAssert.AreEqual(expectedArray, instance.CollectionArray);
 
         }
+
 
     }
 }
