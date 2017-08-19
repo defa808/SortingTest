@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace SortingTest.Test
 {
+
     [TestClass]
     public class ThreadSafe
     {
@@ -16,16 +17,24 @@ namespace SortingTest.Test
         public void ThreadingSafe_TwoThread_CorrectSorting()
         {
             //Arrange
-            var actualArray = new int[] { 2, 4, 3, 1 };
-            var expectedArray = new int[] { 1, 2, 3, 4 };
+            var actualArray = new int[100000];
+            for (int i = 0; i > 100000; i++)
+            {
+                actualArray[i] = 100000 - i;
+            }
+            var expectedArray = new int[100000];
+            for (int i = 0; i > 100000; i++)
+            {
+                actualArray[i] = i + 1;
+            }
 
             SortingArray<int> instance = new SortingArray<int>(actualArray);
             instance.Sorter = new BubbleSorter<int>();
 
 
-            //Act   
-            Thread t = new Thread(new ThreadStart(instance.Sort));
-            t.Start();
+            //Act 
+            Thread thread = new Thread(new ThreadStart(instance.Sort));
+            thread.Start();
             instance.Sort();
 
 
@@ -40,16 +49,18 @@ namespace SortingTest.Test
         public void ThreadingSafe_TwoOperationInDifferentThread_CorrectArray()
         {
             //Arrange
-            var expectedArray = new int[] { 1, 2, 3, 4, 1 };
-            var actualArray = new int[] { 1, 2, 3, 4 };
+            var expectedArray = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 11 };
+            var actualArray = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
             SortingArray<int> instance = new SortingArray<int>(actualArray);
 
 
             //Act
-            Thread t = new Thread(new ThreadStart(instance.Sort));
-            instance.Add(1);
-            t.Start();
-            instance.Add(1);
+            ThreadStart removeLast = new ThreadStart(instance.RemoveLast);
+
+            Thread thread = new Thread(removeLast);
+            thread.Start();
+            instance.Add(11);
+
 
 
             //Assert

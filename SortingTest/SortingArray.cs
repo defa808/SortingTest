@@ -14,6 +14,8 @@ namespace SortingTest
 
         private List<T> _collectionArray;
 
+        private object locker = new object();
+
         public ISorter<T> Sorter { set => _sorter = value; get => _sorter; }
 
 
@@ -44,24 +46,31 @@ namespace SortingTest
 
         public void Sort()
         {
-            
+            lock (locker)
+            {
                 if (_sorter == null)
                 {
                     throw new InvalidOperationException("Sorter is null");
                 }
 
                 _collectionArray = _sorter.Sort(_collectionArray.ToArray());
+            }
         }
 
 
         public void Add(T value)
         {
-            _collectionArray.Add(value);
+            lock (locker)
+            {
+                _collectionArray.Add(value);
+            }
         }
 
         public void RemoveLast()
         {
-            _collectionArray.Remove(_collectionArray.Last());
+            lock (locker) { 
+                _collectionArray.Remove(_collectionArray.Last());
+                }
         }
 
 
