@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SortingTest
 {
-    public class SortingArray<T> : ISorteble, IEnumerator, IEnumerable
+    public class SortingArray<T> : ISorteble
         where T : IComparable<T>
     {
 
@@ -14,26 +14,11 @@ namespace SortingTest
 
         private List<T> _collectionArray;
 
-        private object locker = new object();
-
         public ISorter<T> Sorter { set => _sorter = value; get => _sorter; }
 
 
         public List<T> CollectionArray => _collectionArray;
 
-
-        int position = -1;
-
-        public object Current
-        {
-            get
-            {
-                if (_collectionArray.Count() == 0)
-                    throw new InvalidOperationException("Collection is not set");
-
-                return _collectionArray;
-            }
-        }
 
         public int Count => _collectionArray.Count();
 
@@ -68,41 +53,10 @@ namespace SortingTest
 
         public void RemoveLast()
         {
-            //lock (_collectionArray)
+            lock (_collectionArray)
                 _collectionArray.Remove(_collectionArray.Last());
 
         }
-
-
-
-        public bool MoveNext()
-        {
-            if (position < _collectionArray.Count() - 1)
-            {
-                position++;
-                return true;
-            }
-            return false;
-        }
-
-        public void Reset()
-        {
-            position = -1;
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return this as IEnumerator;
-        }
-
-        public IEnumerator GetEnumerator()
-        {
-            return new SortingArray<T>(_collectionArray);
-        }
-
-
-
-
 
     }
 }

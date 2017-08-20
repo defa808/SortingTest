@@ -7,7 +7,7 @@ namespace SortingTest.Test
 {
     
     [TestClass]
-    public class Test_SortingArray_Method_Sort
+    public class Add
     {
 
         #region Tests_Add
@@ -43,27 +43,7 @@ namespace SortingTest.Test
 
         #endregion
 
-        #region Tests_MoveNext
-        [TestMethod]
-        public void MoveNext_FinityCalling()
-        {
-            //arrange
-            int[] actualArray = new[] { 1, 2 };
-            SortingArray<int> instance = new SortingArray<int>(actualArray);
-
-            //act
-            bool flag = false;
-            for (int i = 0; i < 4; i++)
-            {
-                flag = instance.MoveNext();
-
-            }
-
-            //assert
-            Assert.IsFalse(flag);
-
-        }
-        #endregion
+        
 
 
 
